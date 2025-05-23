@@ -2,12 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Factory : MonoBehaviour
 {
-    public Transform unit;
-    public List<Transform> units;
-    public int current_unit = 0;
-    public int max_unit = 3;
-    public float cooltime = 5f; 
-    bool fuck = true;
+    public List<Transform>  units;
+    public Transform    unit;
+    public Transform    Select;
+    public int          current_unit = 0;
+    public int          max_unit = 3;
+    public float        cooltime = 5f; 
+    private bool        fuck = true;
     
     public float timer = 0f;
     void Start()
@@ -16,6 +17,7 @@ public class Factory : MonoBehaviour
     }
     void Update()
     {
+        
         units.RemoveAll(item => item == null);
         current_unit = units.Count;
         if(God.GameState == "GameMod")
@@ -44,5 +46,33 @@ public class Factory : MonoBehaviour
         units.Add(inst);
         timer = 0f;
         fuck = true;
+    }
+    void OnMouseDown()
+    {
+        F_UnitChoice();
+    }
+    void F_UnitChoice()
+    {
+        
+    }
+
+    // 선택된 옵션에 따라 Factory에 영향을 주는 메서드
+    public void ApplyOption(int optionIndex)
+    {
+        switch (optionIndex)
+        {
+            case 0:
+                print("Option 1 selected: 속성 A 변경");
+                // 속성 A 변경 로직
+                break;
+            case 1:
+                print("Option 2 selected: 속성 B 변경");
+                // 속성 B 변경 로직
+                break;
+            case 2:
+                print("Option 3 selected: 속성 C 변경");
+                // 속성 C 변경 로직
+                break;
+        }
     }
 }

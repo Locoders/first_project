@@ -4,7 +4,7 @@ public class Following : MonoBehaviour
     public GameObject target;
     public float speed = 0.3f;
     private Vector2 velocity = Vector2.zero;
-    void Update()
+    void LateUpdate()
     {
         if (target != null)
         {

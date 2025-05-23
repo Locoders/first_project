@@ -2,19 +2,15 @@ using UnityEngine;
 
 public class Core : MonoBehaviour
 {
-    public float Attack_range = 6;
-    void Start()
+    public float        Attack_range = 6;
+    public float        Health = 100;
+    void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameGod._Core = gameObject;
     }
     void OnDrawGizmos()
     {
+        /*
         // 객체의 위치와 회전을 반영하여 Gizmos로 시각화
         Gizmos.color = Color.red;
         Vector3 startPoint = transform.position;
@@ -32,5 +28,6 @@ public class Core : MonoBehaviour
             if (i > 0) Gizmos.DrawLine(previousPoint, point);
             previousPoint = point;
         }
+        */
     }
 }

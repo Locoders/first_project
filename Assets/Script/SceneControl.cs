@@ -1,29 +1,42 @@
 using UnityEngine;
 public class SceneControl : MonoBehaviour
 {
-    static string before = "GameMod";
-    static GameObject beforescene;
-    static GameObject afterscene;
-    public static void Scenechanger(string after)
+    #region 씬
+    [SerializeField] private GameObject EditModInstance;
+    [SerializeField] private GameObject GameModInstance;
+    [SerializeField] private GameObject StoreModInstance;
+    [SerializeField] private GameObject SettingModInstance;
+    
+    public static GameObject EditMod;
+    public static GameObject GameMod;
+    public static GameObject StoreMod;
+    public static GameObject settingMod;
+    #endregion
+    public static GameObject Curentscene;
+    void Start()
     {
-        GameObject Scenes = GameObject.Find("Scenes");
-        foreach (Transform child in Scenes.transform)
+        // 인스펙터에서 설정한 값을 static 변수에 할당
+        EditMod = EditModInstance;
+        GameMod = GameModInstance;
+        StoreMod = StoreModInstance;
+        settingMod = SettingModInstance;
+        // 씬을 지정
+        Curentscene = GameMod;
+    }
+    
+    public static void Scenechanger(GameObject selectedscene)
+    {
+        God.GameState = selectedscene.name;
+        if(selectedscene == GameMod)
         {
-            if(child.name == before)
-            {
-                beforescene = child.gameObject;
-            }
+            GameGod._Core.transform.parent = selectedscene.transform;
         }
-        foreach (Transform child in Scenes.transform)
+        if(selectedscene == EditMod)
         {
-            if(child.name == after)
-            {
-                afterscene = child.gameObject;
-            }
+            GameGod._Core.transform.parent = selectedscene.transform;
         }
-        GameObject.FindWithTag("core").transform.parent = afterscene.transform;
-        beforescene.gameObject.SetActive(false);
-        afterscene.gameObject.SetActive(true);
-        before = after;
+        Curentscene.SetActive(false);
+        selectedscene.SetActive(true);
+        Curentscene = selectedscene;
     }
 }

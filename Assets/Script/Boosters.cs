@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Boosters : MonoBehaviour
 {
-    public Rigidbody2D rb; // 여기 바디
-    public Movement m;
-    public int Qx; // 제 x사분면
-    public float Rt;
-    public float thrustPower = 1f;
+    public Rigidbody2D  rb; // 여기 바디
+    public Movement     m;
+    public int          Qx; // 제 x사분면
+    public float        Rt;
+    public float        thrustPower = 1f;
     
     List<int> Q;
     void Start () 

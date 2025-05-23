@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Info : MonoBehaviour
 {
-    public List<string> tags;
+    public Sprite _instsprite;
 }
